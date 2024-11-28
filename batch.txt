@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#SBATCH -A r00233
+#SBATCH -J water
+#SBATCH -p general
+#SBATCH -o %j.csv
+#SBATCH -e %j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=khaldar@iu.edu
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=20
+#SBATCH --time=0-48:00:00
+#SBATCH --mem=24G
+
+#Load any modules that your program needs
+module load namd
+
+#Run your program
+srun namd2 step4_equilibration.inp > step4_equilibration_output.txt
